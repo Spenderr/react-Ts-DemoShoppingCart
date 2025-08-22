@@ -18,3 +18,4 @@ A basic **React + TypeScript shopping cart** application built for practice and 
 - **Context API** for cart state management
 - **Fake API** for product data
 - **CSS** for styling
+-
