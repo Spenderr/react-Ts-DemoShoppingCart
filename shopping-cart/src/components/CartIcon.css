@@ -1,0 +1,117 @@
+/* cp- prefix to avoid collisions with old styles */
+.cp-cart-icon-container {
+  position: fixed;       /* stuck to viewport */
+  top: 20px;             /* distance from top of viewport */
+  left: 20px;            /* distance from left of viewport */
+  z-index: 1100;         /* stay on top of page content */
+  display: inline-flex;
+  align-items: flex-start;
+  /* ensure child dropdown is positioned relative to this container */
+}
+
+.cp-cart-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #0070f3;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  position: relative;
+}
+
+/* badge */
+.cp-cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff3b3b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+/* dropdown will be absolutely positioned relative to the container */
+.cp-cart-icon-container > .cp-cart-dropdown {
+  position: absolute;
+  top: 48px;   /* appears under the icon */
+  left: 0;
+}
+
+
+/* existing rules you already have... */
+
+/* badge base */
+.cp-cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff3b3b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center;
+  transition: box-shadow 160ms ease;
+}
+
+/* vibration / pop for increase */
+@keyframes cp-bump-up {
+  0% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+  40% {
+    transform: scale(1.32) translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 112, 243, 0.18);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: none;
+  }
+}
+
+/* shrink/sink for decrease */
+@keyframes cp-bump-down {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.78) translateY(2px);
+    opacity: 0.92;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* applying animations */
+.cp-cart-badge.bump.inc {
+  animation: cp-bump-up 360ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.cp-cart-badge.bump.dec {
+  animation: cp-bump-down 320ms cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+/* optional: subtle color flash on increase */
+.cp-cart-badge.bump.inc {
+  background: linear-gradient(180deg, #ff6b6b, #ff3b3b);
+}
+
+/* optional: slightly muted on decrease */
+.cp-cart-badge.bump.dec {
+  background: linear-gradient(180deg, #ff3b3b, #e63b3b);
+}

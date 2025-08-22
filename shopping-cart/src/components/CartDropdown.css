@@ -1,0 +1,134 @@
+/* Root dropdown */
+.cp-cart-dropdown {
+  width: 320px;
+  max-height: 420px;
+  overflow-y: auto;
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  border-radius: 10px;
+  padding: 12px;
+  z-index: 1200;
+
+  /* small entrance animation (optional) */
+  animation: cp-dropdown-in 160ms ease;
+}
+
+/* optional entrance keyframes */
+@keyframes cp-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cp-empty {
+  text-align: center;
+  color: #555;
+  padding: 14px 0;
+}
+
+/* item card */
+.cp-cart-item-card {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.cp-cart-item-card img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.cp-item-info {
+  flex: 1;
+}
+
+.cp-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 6px 0;
+}
+
+.cp-price {
+  font-size: 13px;
+  color: #555;
+  margin: 0;
+}
+
+/* qty controls */
+.cp-qty {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cp-qty button {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  background: white;
+}
+
+/* footer */
+.cp-cart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.cp-checkout-btn {
+  background: #0070f3;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.cp-total {
+  color: #000000;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Checkout button inside cart dropdown */
+.cp-cart-footer .cp-checkout-btn {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  background-color: #0070f3;  /* primary blue */
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none; /* remove underline from Link */
+  box-shadow: 0 4px 12px rgba(0, 112, 243, 0.18);
+}
+
+.cp-cart-footer .cp-checkout-btn:hover {
+  background-color: #005fcc; /* darker blue on hover */
+  box-shadow: 0 6px 16px rgba(0, 95, 204, 0.22);
+  transform: translateY(-1px);
+}
+
+.cp-cart-footer .cp-checkout-btn:active {
+  background-color: #004bb5;
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 75, 181, 0.18);
+}
