@@ -1,5 +1,5 @@
 import React from "react";
-import ProductsList from "../components/productList";
+import ProductsList from "../components/ProductList";
 import CartIcon from "../components/CartIcon";
 
 const ShoppingPage: React.FC = () => {
