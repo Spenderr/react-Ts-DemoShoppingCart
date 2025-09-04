@@ -11,21 +11,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout code
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # 2️⃣ Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Debug secrets
-        run: |
-          echo "Username is: ${{ secrets.DOCKERHUB_USERNAME }}"
-          echo "Token length: ${#${{ secrets.DOCKERHUB_TOKEN }}}"
 
+      # 3️⃣ Build Docker image
       - name: Build Docker image
-        run: docker build -t spenderr/shopping-cart .
+        run: |
+          IMAGE_NAME=spenderr/shopping-cart
+          GIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+          docker build -t $IMAGE_NAME:latest -t $IMAGE_NAME:$GIT_SHA .
 
-      - name: Push Docker image
-        run: docker push spenderr/shopping-cart
+      # 4️⃣ Push Docker images
+      - name: Push Docker images
+        run: |
+          IMAGE_NAME=spenderr/shopping-cart
+          GIT_SHA=$(echo $GITHUB_SHA | cut -c1-7)
+          docker push $IMAGE_NAME:latest
+          docker push $IMAGE_NAME:$GIT_SHA
