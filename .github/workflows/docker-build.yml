@@ -19,9 +19,11 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+          logout: true # This is a good practice to ensure a clean state after the job.
 
-      - name: Build Docker image
-        run: docker build -t spenderr/shopping-cart .
-
-      - name: Push Docker image
-        run: docker push spenderr/shopping-cart
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: spenderr/shopping-cart:latest
