@@ -4,5 +4,8 @@ import react from "@vitejs/plugin-react";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/react-Ts-DemoShoppingCart/shopping-cart", 
+  base: "/react-Ts-DemoShoppingCart/",
+  build: {
+    outDir: "dist", // default
+  },
 });
