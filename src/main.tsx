@@ -1,13 +1,20 @@
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
-import React from 'react'
-import { CartProvider } from './context/CartContext'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import App from './App.tsx';
+import { CartProvider } from './context/CartContext';
 
-createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <CartProvider>
-      <App />
-    </CartProvider>
-  </React.StrictMode>
-)
+
+const rootElement = document.getElementById('root');
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <React.StrictMode>
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </React.StrictMode>
+  );
+} else {
+  console.error("Root element not found. Make sure your index.html has an element with id='root'");
+}
