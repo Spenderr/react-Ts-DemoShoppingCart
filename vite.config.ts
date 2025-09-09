@@ -3,8 +3,8 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "./", // Use relative paths for GitHub Pages in docs/
+  base: "/react-Ts-DemoShoppingCart/", 
   build: {
-    outDir: "docs",
+    outDir: "docs", // build into docs folder
   },
 });
